@@ -53,8 +53,8 @@ for(i in 1:length(runlist)){
 #create a df to store data from all runs
 allratesdat <- data.frame(matrix(ncol=3,nrow=0, dimnames=list(NULL, c("probe", "rate", "run"))))
 #inspect each run to determine where we are going to calculate the rate (i.e. remove any weird spots of data)
-run_num <- run_5 #Put the number of the run that you are caclulcating rate for here
-df.name <- "5" ##Update this each time you update the above
+run_num <- run_3 #Put the number of the run that you are caclulcating rate for here
+df.name <- "3" ##Update this each time you update the above
 inspect(run_num, time = 1, oxygen = 2:8)#*Assumes 8 probe respirometer****
 #Set the start and end times over the period of o2 consumption based on inspection of data
 #About a 30 minute period with no blips/weird behavior
