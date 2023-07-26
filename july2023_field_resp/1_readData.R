@@ -7,8 +7,8 @@ library(gridExtra)
 library(lubridate)
 library(respR)
 # Define working directories ----------------------------------------------
-project_wd <- "C:/Users/kathe/OneDrive/Documents/CICOES/oyster_respirometry/june2023_field_resp"
-data_wd_temperature <- "C:/Users/kathe/OneDrive/Documents/CICOES/raw_data/june2023_field_resp"
+project_wd <- "C:/Users/kathe/OneDrive/Documents/CICOES/oyster_respirometry/july2023_field_resp"
+data_wd_temperature <- "C:/Users/kathe/OneDrive/Documents/CICOES/raw_data/july2023_field_resp"
 expt <- "temperature"
 # Read in all the data ----------------------------------------------------
 ##This code will create a numbered DF corresponsing to the order of the runs. 
@@ -53,15 +53,15 @@ for(i in 1:length(runlist)){
 #create a df to store data from all runs
 allratesdat <- data.frame(matrix(ncol=3,nrow=0, dimnames=list(NULL, c("probe", "rate", "run"))))
 #inspect each run to determine where we are going to calculate the rate (i.e. remove any weird spots of data)
-run_num <- run_3 #Put the number of the run that you are caclulcating rate for here
-df.name <- "3" ##Update this each time you update the above
+run_num <- run_4#Put the number of the run that you are caclulcating rate for here
+df.name <- "4" ##Update this each time you update the above
 inspect(run_num, time = 1, oxygen = 2:8)#*Assumes 8 probe respirometer****
 #Set the start and end times over the period of o2 consumption based on inspection of data
 #About a 30 minute period with no blips/weird behavior
-start_time <- 10
-end_time <- 40
+start_time <- 42
+end_time <- 55
 
-#run_1 = run_1[-c(3)]#to remove problematic probe 7 readings--RAN ONLY ONCE
+#run_8 = run_8[-c(4)]#to remove problematic probe 7 readings--RAN ONLY ONCE
 
 ######YOU SHOULD NOT HAVE TO CHANGE ANY OF THE BELOW CODE FOR EACH RUN
 

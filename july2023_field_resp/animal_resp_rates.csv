@@ -1,0 +1,122 @@
+probe,run,Date,Time,Chamber,Site,Colour,Bag.Number,Mass,Length,file.letter,Run,Respirometry.number,Notes,rate
+1,1,7072023,1136,1,Thorndyke,Blank,,NA,NA,a,1,1,battery died at around 1200,-0.281362299
+2,1,7072023,1136,2,Thorndyke,Green,90,NA,NA,a,1,2,,-2.730079311
+4,1,7072023,1136,4,Thorndyke,Blue,35,NA,NA,a,1,3,,-1.315711395
+5,1,7072023,1136,5,Thorndyke,Green,82,NA,NA,a,1,4,,-2.22558933
+8,1,7072023,1136,8,Thorndyke,Red,7,NA,NA,a,1,5,,-0.328959555
+9,1,7072023,1136,9,Thorndyke,Blue ,35,NA,NA,a,1,6,,-0.49448257
+1,2,7072023,1229,1,Thorndyke,Blue,35,NA,NA,b,2,7,battery died again about 33 minutes in ,-0.915678064
+2,2,7072023,1229,2,Thorndyke,Green,90,NA,NA,b,2,8,,-1.033979846
+4,2,7072023,1229,4,Thorndyke,Green,82,NA,NA,b,2,9,,-1.135041229
+5,2,7072023,1229,5,Thorndyke,Blank,,NA,NA,b,2,10,,-0.074903161
+8,2,7072023,1229,8,Thorndyke,Green,82,NA,NA,b,2,11,,-0.293023677
+9,2,7072023,1229,9,Thorndyke,Red,7,NA,NA,b,2,12,,-0.655826212
+1,3,7072023,1342,1,Thorndyke,Red,6,NA,NA,c,3,13,battery stopped around 6 mins but started again,-0.572794726
+2,3,7072023,1342,2,Thorndyke,Blank,,NA,NA,c,3,14,,-0.052101527
+4,3,7072023,1342,4,Thorndyke,Green ,90,NA,NA,c,3,15,,-0.944582417
+5,3,7072023,1342,5,Thorndyke,Red,7,NA,NA,c,3,16,,-1.818899752
+8,3,7072023,1342,8,Thorndyke,Blue,71,NA,NA,c,3,17,,-0.731721325
+9,3,7072023,1342,9,Thorndyke,Blue,56,NA,NA,c,3,18,,-1.508482784
+2,4,7072023,NA,2,Thorndyke,Red,6,NA,NA,d,4,20,,-0.449357014
+4,4,7072023,NA,4,Thorndyke,Blank,,NA,NA,d,4,21,,-0.089287362
+5,4,7072023,NA,5,Thorndyke,Red,6,NA,NA,d,4,22,,-0.337535042
+8,4,7072023,NA,8,Thorndyke,Blue,56,NA,NA,d,4,24,,-0.549083367
+1,5,7072023,NA,1,Thorndyke,Red,4,NA,NA,e,5,26,,-2.461603797
+2,5,7072023,NA,2,Thorndyke,Red,4,NA,NA,e,5,27,,-0.249427776
+4,5,7072023,NA,4,Thorndyke,Blue,71,NA,NA,e,5,28,,-1.001661259
+5,5,7072023,NA,5,Chelsea,Red,43,NA,NA,e,5,29,,-1.253737509
+7,5,7072023,NA,7,Chelsea,Blank,Blank,NA,NA,e,5,30,,-0.274865468
+8,5,7072023,NA,8,Chelsea,Red,42,NA,NA,e,5,31,,-0.328898294
+9,5,7072023,NA,9,Chelsea,Blue,59,NA,NA,e,5,32,,-0.478881226
+1,6,7102023,1043,1,Chelsea,Blue,51,NA,NA,a,6,33,,-0.40221505
+2,6,7102023,1043,2,Chelsea,Red,42,NA,NA,a,6,34,,-0.139530819
+4,6,7102023,1043,4,Chelsea,Blank,Blank,NA,NA,a,6,35,,-0.100176429
+5,6,7102023,1043,5,Chelsea,Red,41,NA,NA,a,6,36,,-0.177720064
+7,6,7102023,1043,7,Chelsea,Red,41,NA,NA,a,6,37,moved probe at ~15 mins,-1.336329896
+8,6,7102023,1043,8,Chelsea,Green,53,NA,NA,a,6,38,,-0.391950401
+9,6,7102023,1043,9,Chelsea,Blue,62,NA,NA,a,6,39,,-0.4554969
+1,7,7102023,1359,1,Chelsea,Green,53,NA,NA,b,7,40,,-0.342738042
+2,7,7102023,1359,2,Chelsea,Red,42,NA,NA,b,7,41,,-0.386961834
+4,7,7102023,1359,4,Chelsea,Green,52,NA,NA,b,7,42,,-0.074601985
+5,7,7102023,1359,5,Chelsea,Blue,62,NA,NA,b,7,43,,-0.373837256
+7,7,7102023,1359,7,Chelsea,Blue,58,NA,NA,b,7,44,,-0.547552946
+8,7,7102023,1359,8,Chelsea,Red,41,NA,NA,b,7,45,,-0.131913561
+9,7,7102023,1359,9,Chelsea,Blank,Blank,NA,NA,b,7,46,,-0.069593891
+1,8,7102023,NA,1,Chelsea,Blue,51,NA,NA,c,8,47,,-0.445068918
+2,8,7102023,NA,2,Chelsea,Blue,59,NA,NA,c,8,48,,-0.220988568
+4,8,7102023,NA,4,Chelsea,Green,52,NA,NA,c,8,49,,-0.354962926
+7,8,7102023,NA,7,Chelsea,Green,53,NA,NA,c,8,51,,-0.343961131
+8,8,7102023,NA,8,Chelsea,Blank,Blank,NA,NA,c,8,52,,-0.047888405
+9,8,7102023,NA,9,Chelsea,Blue,62,NA,NA,c,8,53,,-0.664180811
+1,9,7102023,NA,1,Chelsea,Green,53,NA,NA,d,9,54,,-0.120846608
+2,9,7102023,NA,2,Chelsea,Green,52,NA,NA,d,9,55,,-0.241796374
+4,9,7102023,NA,4,Chelsea,Green,53,NA,NA,d,9,56,,-0.308938789
+5,9,7102023,NA,5,Chelsea,Blue,51,NA,NA,d,9,50,repeat of run 3 chamber 5,-0.47662014
+7,9,7102023,NA,7,Chelsea,Red,43,NA,NA,d,9,57,,-0.110122033
+8,9,7102023,NA,8,Chelsea,Red,43,NA,NA,d,9,58,,-0.54917415
+9,9,7102023,NA,9,Chelsea,Blank,Blank,NA,NA,d,9,59,,-0.04522036
+1,10,7112023,1004,1,Manchester,Red,13,NA,NA,a,10,60,,-0.082674429
+2,10,7112023,1004,2,Manchester,Blank,Blank,NA,NA,a,10,61,,-0.046260643
+4,10,7112023,1004,4,Manchester,Green,92,NA,NA,a,10,62,,-0.091678273
+5,10,7112023,1004,5,Chelsea,Green,53,NA,NA,a,10,63,,-0.440741472
+7,10,7112023,1004,7,Manchester,Green,95,NA,NA,a,10,64,,-0.615813171
+8,10,7112023,1004,8,Manchester,Red,12,NA,NA,a,10,65,,-0.08291974
+9,10,7112023,1004,9,Manchester,Blue,57,NA,NA,a,10,66,,-0.107341277
+1,11,7112023,NA,1,Manchester,Blank,Blank,NA,NA,b,11,67,,-0.040417029
+2,11,7112023,NA,2,Manchester,Blue,30,NA,NA,b,11,68,,-0.651182803
+4,11,7112023,NA,4,Manchester,Blue,57,NA,NA,b,11,69,,-0.576579455
+5,11,7112023,NA,5,Manchester,Green,94,NA,NA,b,11,70,,-0.489584514
+7,11,7112023,NA,7,Manchester,Red,25,NA,NA,b,11,71,,-0.201445021
+8,11,7112023,NA,8,Manchester,Green,95,NA,NA,b,11,72,redoing this one in the next run - didn't notice a friend tagging along,-0.123462113
+9,11,7112023,NA,9,Manchester,Blue,33,NA,NA,b,11,73,,-0.47582035
+1,12,7112023,1420,1,Manchester,Green,95,NA,NA,c,12,72,repeat of run 2 ch8,-0.59057166
+2,12,7112023,1420,2,Manchester,Blue,30,NA,NA,c,12,74,,-0.362171885
+4,12,7112023,1420,4,Manchester,Red,25,NA,NA,c,12,75,,-0.074773715
+5,12,7112023,1420,5,Manchester,Blue,33,NA,NA,c,12,76,moved probe at ~8 mins,-0.088018128
+7,12,7112023,1420,7,Manchester,Green,94,NA,NA,c,12,77,,-0.597130641
+8,12,7112023,1420,8,Manchester,Green,92,NA,NA,c,12,78,,-0.343723222
+9,12,7112023,1420,9,Manchester,Blank,Blank,NA,NA,c,12,79,,-0.039817129
+1,13,7112023,1606,1,Manchester,Red,13,NA,NA,d,13,80,,-0.095262915
+2,13,7112023,1606,2,Manchester,Red,12,NA,NA,d,13,81,,-0.426159504
+4,13,7112023,1606,4,Manchester,Blue,33,NA,NA,d,13,82,,-0.106718585
+5,13,7112023,1606,5,Manchester,Blank,Blank,NA,NA,d,13,83,,-0.049150457
+7,13,7112023,1606,7,Manchester,Blue,30,NA,NA,d,13,84,,-0.146805591
+8,13,7112023,1606,8,Manchester,Green,95,NA,NA,d,13,85,,-0.066300192
+9,13,7112023,1606,9,Manchester,Blue,57,NA,NA,d,13,86,,-0.103452435
+1,14,7112023,1800,1,Manchester,Red,25,NA,NA,e,14,87,,-0.101558974
+2,14,7112023,1800,2,Manchester,Red,13,NA,NA,e,14,88,,-0.093162209
+4,14,7112023,1800,4,Manchester,Green,94,NA,NA,e,14,89,,-0.074505143
+5,14,7112023,1800,5,Manchester,Red,12,NA,NA,e,14,90,,-0.124344131
+7,14,7112023,1800,7,Manchester,Blank,Blank,NA,NA,e,14,91,,-0.066635721
+8,14,7112023,1800,8,Manchester,Green,92,NA,NA,e,14,92,,-0.31294262
+1,15,7182023,1300,1,Hood Head,Blue,86,NA,NA,a,15,93,discard first 10 minutes. Redoing chamber 7 bc sensor was dumb. Also I think some of the oysters didnt open up until later,-1.275509517
+2,15,7182023,1300,2,Hood Head,blank,blank,NA,NA,a,15,--,,-0.040109754
+4,15,7182023,1300,4,Hood Head,red,32,NA,NA,a,15,94,,-1.133416442
+5,15,7182023,1300,5,Hood Head,green,54,NA,NA,a,15,95,,-1.12909246
+7,15,7182023,1300,7,Hood Head,red,47,NA,NA,a,15,--,This chamber was redone later as oyster 98,-0.206809028
+8,15,7182023,1300,8,Hood Head,bue,85,NA,NA,a,15,96,,-0.573367839
+9,15,7182023,1300,9,Hood Head,green,87,NA,NA,a,15,97,,-0.492148685
+1,16,7182023,1430,1,Hood Head,red,47,NA,NA,b,16,98,redoof chamber 7 from last round bc probe was fucked up,-0.179265186
+2,16,7182023,1430,2,Hood Head,red,38,NA,NA,b,16,99,,-1.708228576
+4,16,7182023,1430,4,Hood Head,blank,blank,NA,NA,b,16,--,,-0.038875189
+5,16,7182023,1430,5,Hood Head,blue,84,NA,NA,b,16,100,probe was too close to the oyster for the first part,-1.128251925
+8,16,7182023,1430,8,Hood Head,green,78,NA,NA,b,16,101,,-1.220109545
+9,16,7182023,1430,9,Hood Head,red,47,NA,NA,b,16,102,,-0.889976883
+1,17,7182023,1630,1,Hood Head,blue,86,NA,NA,c,17,103,,-1.477044949
+2,17,7182023,1630,2,Hood Head,green,54,NA,NA,c,17,104,,-0.844685731
+4,17,7182023,1630,4,Hood Head,red,32,NA,NA,c,17,105,,-1.454473797
+5,17,7182023,1630,5,Hood Head,blue,84,NA,NA,c,17,106,,-1.611491279
+8,17,7182023,1630,8,Hood Head,green,78,NA,NA,c,17,107,,-1.140163078
+9,17,7182023,1630,9,Hood Head,Blank,Blank,NA,NA,c,17,--,,-0.022901965
+1,18,7192023,1030,1,Hood Head,Blank,Blank,NA,NA,a,18,--,,-0.20851616
+2,18,7192023,1030,2,Hood Head,Blue,85,NA,NA,a,18,108,,-1.663179303
+4,18,7192023,1030,4,Hood Head,Red,38,NA,NA,a,18,109,,-1.31896768
+5,18,7192023,1030,5,Hood Head,Blue,84,NA,NA,a,18,110,,-0.95748124
+8,18,7192023,1030,8,Hood Head,Blue,86,NA,NA,a,18,111,,-0.875858488
+9,18,7192023,1030,9,Hood Head,Red,32,NA,NA,a,18,112,,-0.90010748
+1,19,7192023,1145,1,Hood Head,Red,47,NA,NA,b,19,113,,-0.866066105
+2,19,7192023,1145,2,Hood Head,Green,87,NA,NA,b,19,118,chamber ended up with bubbles,-1.371835874
+4,19,7192023,1145,4,Hood Head,Green,78,NA,NA,b,19,114,,-0.837340115
+5,19,7192023,1145,5,Hood Head,Blank,Blank,NA,NA,b,19,--,,-0.171412768
+8,19,7192023,1145,8,Hood Head,Blue,85,NA,NA,b,19,115,,-1.174371552
+9,19,7192023,1145,9,Hood Head,Blue,86,NA,NA,b,19,116,,-1.036197619
