@@ -70,11 +70,12 @@ ggplot(data=carbchem_data, aes(x=pH.sample.with.dye.corrections, y=TA_evap))+
 
 ggplot(data=carbchem_data, aes(x=pH.sample.with.dye.corrections, y=temp.Field))+
   geom_point(aes(color=Site))
-
+getwd()
 
 
 ##### SEACARB #######################################################################
 library(seacarb)
+
 
 carbchem_data$seacarb <- carb(flag=8, #flag 8 uses pH as var1 and TA as var2
                 var1=carbchem_data$pH.sample.with.dye.corrections,
@@ -84,7 +85,7 @@ carbchem_data$seacarb <- carb(flag=8, #flag 8 uses pH as var1 and TA as var2
                 P=0)
 
 #change file name          
-write.csv(carbchem_data, "july2023_carb_chem_system.csv")
+write.csv(carbchem_data, "pbb_carb_chem_system_20230727.csv")
 
 ggplot(data=carbchem_data, aes(x=Site, y=seacarb$OmegaAragonite))+
   geom_boxplot()
