@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?><metadata>
+    <idinfo>
+        <citation>
+            <citeinfo>
+                <origin/>
+                <pubdate>19950101</pubdate>
+                <title>Major Shorelines of Washington State</title>
+                <geoform>vector digital data</geoform>
+                <pubinfo>
+                    <pubplace/>
+                    <publish>Washington State Department of Transportation</publish>
+                </pubinfo>
+                <onlink>https://data.wsdot.wa.gov/arcgis/rest/services/Shared/MajorShorelinesData/FeatureServer/0</onlink>
+                <onlink>https://data.wsdot.wa.gov/geospatial/DOT_TDO/MajorShorelines.zip</onlink>
+            </citeinfo>
+        </citation>
+        <descript>
+            <abstract>Major hydrography for Washington State represented as polygons. Features in this data set define the land extent of Washington state.</abstract>
+            <purpose>This data set is for general-purpose base maps at 1:500,000 or smaller, where detailed river information is not needed.</purpose>
+        </descript>
+        <timeperd>
+            <timeinfo>
+                <sngdate>
+                    <caldate>19940701</caldate>
+                </sngdate>
+            </timeinfo>
+            <current>ground condition</current>
+        </timeperd>
+        <status>
+            <progress>Complete</progress>
+        </status>
+        <spdom>
+            <bounding>
+                <westbc>-124.938078</westbc>
+                <eastbc>-116.918187</eastbc>
+                <northbc>49.092459</northbc>
+                <southbc>45.243627</southbc>
+            </bounding>
+        </spdom>
+        <keywords>
+            <theme>
+                <themekt>None</themekt>
+                <themekey>stream</themekey>
+                <themekey>hydrography</themekey>
+                <themekey>river</themekey>
+                <themekey>coastline</themekey>
+            </theme>
+            <place>
+                <placekt>None</placekt>
+                <placekey>Washington</placekey>
+                <placekey>United States</placekey>
+                <placekey>Pacific Northwest</placekey>
+                <placekey>WA</placekey>
+                <placekey>USA</placekey>
+            </place>
+        </keywords>
+        <accconst>Other Constraints</accconst>
+        <useconst>Data provided here is used by the Washington State Department of Transportation's transportation partners, government entities, schools, private businesses, and the general public. The Washington State Department of Transportation shall not be liable for any activity involving these data, including, but not limited to, lost profits or savings or any other economic or consequential damages. Nor does the Department warrant the fitness of the data for use for a particular purpose, or the installation of the data, its use, or the results obtained.</useconst>
+        <ptcontac>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>GIS and Roadway Data Office, Washington State Department of Transportation</cntorg>
+                    <cntper>Thomas A. Blake</cntper>
+                </cntorgp>
+                <cntpos>GIS Data Products Supervisor</cntpos>
+                <cntaddr>
+                    <addrtype>mailing</addrtype>
+                    <address>PO Box 47384</address>
+                    <city>Olympia</city>
+                    <state>WA</state>
+                    <postal>98504-7384</postal>
+                    <country>US</country>
+                </cntaddr>
+                <cntvoice>360-570-2363</cntvoice>
+                <cntemail>blaket@wsdot.wa.gov</cntemail>
+            </cntinfo>
+        </ptcontac>
+        <native>Version 6.2 (Build 9200) ; Esri ArcGIS 10.7.1.11595</native>
+    </idinfo>
+    <dataqual>
+        <attracc>
+            <attraccr>none</attraccr>
+        </attracc>
+        <logic>Polygon topology was verified by the Arc/Info "BUILD" command.</logic>
+        <complete>The data depicts: Washington State coastlines of the Pacific Ocean; the San Juan Islands; Puget Sound and its major islands; and the Columbia, Snake and Pend O'reille Rivers.</complete>
+        <posacc>
+            <horizpa>
+                <horizpar>Positional accuracy has not been determined.</horizpar>
+            </horizpa>
+        </posacc>
+        <lineage>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <title>state.dgn, 1994</title>
+                    </citeinfo>
+                </srccite>
+                <srcscale>500000</srcscale>
+                <typesrc>onLine</typesrc>
+                <srccitea>state.dgn, 1994</srccitea>
+                <srccontr>The graphics depicting Washington state's major hydrography.</srccontr>
+            </srcinfo>
+            <procstep>
+                <procdesc>Selected streams were digitized using Intergraph's IGDS software. The resulting design file was intermittently revised to reflect newly compiled data from 1:100,000 USGS sources. Major water features were extracted from the file to portray the state's coastlines and biggest rivers. The DGN file was converted to an Arc/Info coverage using Arc command "IGDSARC," and then transformed to geographic coordinates with Arc commands "PROJECTDEFINE" and "PROJECT."</procdesc>
+                <procdate>19941130</procdate>
+                <proccont>
+                    <cntinfo>
+                        <cntorgp>
+                            <cntorg>Washington State Department of Transportation</cntorg>
+                            <cntper>Gordon Kennedy</cntper>
+                        </cntorgp>
+                        <cntpos>Coordinator, Information Resources Management</cntpos>
+                        <cntaddr>
+                            <addrtype>mailing</addrtype>
+                            <address>PO Box 47430</address>
+                            <city>Olympia</city>
+                            <state>WA</state>
+                            <postal>98504-7430</postal>
+                            <country>US</country>
+                        </cntaddr>
+                        <cntvoice>360-705-7641</cntvoice>
+                        <cntfax>360-705-6817</cntfax>
+                        <cntemail>gkennedy@wsdot.wa.gov</cntemail>
+                        <hours>0700 to 1530, Pacific Time, M-F</hours>
+                    </cntinfo>
+                </proccont>
+            </procstep>
+        </lineage>
+    </dataqual>
+    <spdoinfo>
+        <direct>Vector</direct>
+        <ptvctinf>
+            <sdtsterm>
+                <sdtstype>GT-polygon composed of chains</sdtstype>
+                <ptvctcnt>6</ptvctcnt>
+            </sdtsterm>
+        </ptvctinf>
+    </spdoinfo>
+    <eainfo>
+        <detailed>
+            <enttyp>
+                <enttypl>MajorShorelines</enttypl>
+                <enttypd>The coastlines of Washington state's major hydrographical features.</enttypd>
+                <enttypds>Cartography Section, Washington State Department of Transportation</enttypds>
+            </enttyp>
+            <attr>
+                <attrlabl>OBJECTID</attrlabl>
+                <attrdef>Internal feature number.</attrdef>
+                <attrdefs>ESRI</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Sequential unique whole numbers that are automatically generated.</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>Shape</attrlabl>
+                <attrdef>Feature geometry.</attrdef>
+                <attrdefs>ESRI</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Coordinates defining the features.</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>SHAPE.STArea()</attrlabl>
+            </attr>
+            <attr>
+                <attrlabl>SHAPE.STLength()</attrlabl>
+            </attr>
+        </detailed>
+        <overview>
+            <eaover>Polygons represent  Washington state's major hydrographical features.</eaover>
+        </overview>
+    </eainfo>
+    <distinfo>
+        <distrib>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>Washington State Department of Transportation, Office of Information Technology</cntorg>
+                    <cntper>Jordyn Mitchell</cntper>
+                </cntorgp>
+                <cntpos>GIS Database Administrator</cntpos>
+                <cntemail>jordyn.mitchell@wsdot.wa.gov</cntemail>
+            </cntinfo>
+        </distrib>
+        <distliab>The Washington State Department of Transportation shall not be liable for any activity involving this data with regard to lost profits or savings or any other consequential damages; or the fitness for use of the data for a particular purpose; or the installation of the data, its use, or the results obtained.</distliab>
+        <custom>Download individual data sets from https://gisdata-wsdot.opendata.arcgis.com</custom>
+    </distinfo>
+    <metainfo>
+        <metd>20220527</metd>
+        <metc>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>Washington State Department of Transportation</cntorg>
+                    <cntper>Michelle Blake</cntper>
+                </cntorgp>
+                <cntpos>GIS Data Administrator</cntpos>
+                <cntaddr>
+                    <addrtype>mailing</addrtype>
+                    <address>PO Box 47430</address>
+                    <city>Olympia</city>
+                    <state>WA</state>
+                    <postal>98504-7430</postal>
+                    <country>US</country>
+                </cntaddr>
+                <cntvoice>360-705-7797</cntvoice>
+                <cntfax>360-705-6817</cntfax>
+                <cntemail>blakem@wsdot.wa.gov</cntemail>
+                <cntinst>Call, email or write with requests for geo-spatial data sets.</cntinst>
+            </cntinfo>
+        </metc>
+        <metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn>
+        <metstdv>FGDC-STD-001-1998</metstdv>
+        <mettc>local time</mettc>
+    </metainfo>
+</metadata>

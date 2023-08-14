@@ -3,7 +3,7 @@ Date,Time,Chamber,Site,Colour,Bag Number,Mass,Length,file letter,Run,Respirometr
 6072023,1200,2,Thordyke,Red,4,,,b,1,2,
 6072023,1200,4,Thordyke,Blank,Blank,,,b,1,4,
 6072023,1200,5,Thordyke,Red,5,,,b,1,5,
-6072023,1200,7,Thordyke,Red,6,,,b,1,7,
+6072023,1200,7,Thordyke,Red,6,,,b,1,7,data didn't save for this chamber
 6072023,1200,8,Thordyke,Red,5,,,b,1,8,
 6072023,1200,9,Thordyke,Red,4,,,b,1,9,
 6072023,,1,Thordyke,Blue,35,,,c,2,10,
@@ -13,13 +13,13 @@ Date,Time,Chamber,Site,Colour,Bag Number,Mass,Length,file letter,Run,Respirometr
 6072023,,7,Thordyke,Blank,Blank,,,c,2,14,Measurement eror with proble. NO blank fro this run.
 6072023,,8,Thordyke,Green,82,,,c,2,15,
 6072023,,9,Thordyke,Blue,71,,,c,2,16,
-6082023,1000,1,Thordyke,Blank,Blank,,,a,3,17,Note that this is a repeat of last nights run
-6082023,1000,2,Thordyke,Green,82,,,a,3,18,
-6082023,1000,4,Thordyke,Blue,50,,,a,3,19,
-6082023,1000,5,Thordyke,Blue,50,,,a,3,20,
-6082023,1000,7,Thordyke,Green,90,,,a,3,21,
-6082023,1000,8,Thordyke,Green,90,,,a,3,22,
-6082023,1000,9,Thordyke,Green,90,,,a,3,23,
+6072023,1700,1,Thorndyke,Blank,Blank,,,d,3,17,Discard first 20 minutes
+6072023,1700,2,Thorndyke,Green,82,,,d,3,18,
+6072023,1700,4,Thorndyke,Blue,50,,,d,3,19,
+6072023,1700,5,Thorndyke,Blue,50,,,d,3,20,
+6072023,1700,7,Thorndyke,Green,90,,,d,3,21,
+6072023,1700,8,Thorndyke,Green,90,,,d,3,22,
+6072023,1700,9,Thorndyke,Green,90,,,d,3,23,
 6082023,1145,1,Chelsea,Blue,51,,,b,4,24,
 6082023,1145,2,Chelsea,Green,52,,,b,4,25,
 6082023,1145,4,Chelsea,Red,31,,,b,4,26,
@@ -27,13 +27,6 @@ Date,Time,Chamber,Site,Colour,Bag Number,Mass,Length,file letter,Run,Respirometr
 6082023,1145,7,Chelsea,Red,31,,,b,4,28,
 6082023,1145,8,Chelsea,Green,52,,,b,4,29,
 6082023,1145,9,Chelsea,Green,62,,,b,4,30,
-6082023,1300,1,Chelsea,Blue,59,,,c,5,31,
-6082023,1300,2,Chelsea,Green,62,,,c,5,32,
-6082023,1300,4,Chelsea,Blue,59,,,c,5,33,
-6082023,1300,5,Chelsea,Blue,55,,,c,5,34,
-6082023,1300,7,Chelsea,Green,52,,,c,5,35,
-6082023,1300,8,Chelsea,Blank,Blank,,,c,5,36,
-6082023,1300,9,Chelsea,Blue,51,,,c,5,37,
 6082023,1346,1,Chelsea,Blue,59,,,d,5,31,D is a repeat of c
 6082023,1346,2,Chelsea,Green,62,,,d,5,32,Battery went flat at 30 minute mark
 6082023,1346,4,Chelsea,Blue,59,,,d,5,33,
