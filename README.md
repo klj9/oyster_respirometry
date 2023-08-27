@@ -1,3 +1,3 @@
 # oyster_respirometry
 
-Workflow for processing respirometry data
+In this repo, you'll find all the code I used during my CICOES REU during the summer of 2023.
