@@ -1,0 +1,85 @@
+---
+title: "Seacarb using pH and TA"
+author: "Katie Jackson"
+date: "2023-08-16"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir="C:/Users/Kathe/OneDrive/Documents/CICOES/oyster_respirometry/carbonate_chem/july2023")#set wd for all following code chunks, wherever TA and pH data is stored -- knitr doesn't like setwd()
+```
+
+This script takes the pH data from the spec and the TA data from the titrator and calculates the full seawater carbonate chemistry system using the Seacarb package.
+```{r packages}
+library(tidyverse)
+library(seacarb)
+
+```
+
+
+### Read in and clean up pH data
+```{r pH data}
+#I compiled all my spec readings into one file manually because they were messy but you could also just put them in a folder and read them in using a loop
+specdat <- read.csv("spec_data_all_jul2023_field_samples.csv")
+
+glimpse(specdat)
+
+specdat$Site <- as.factor(specdat$Site)#change site for char to factor
+specdat$Rep <- toupper(specdat$Rep)#to match the titrator 
+
+#full dataframe contains a lot of columns we won't need, so for the sake of order we'll just grab the necessary fields
+spec_data <- specdat %>% select(Site, Rep, Date.Collected, ph.Field, temp.Field, Temperature...spec.C, Salinity, pH.sample.with.dye.corrections, pH.of.sample.without.correction)
+
+spec_data <- spec_data %>% filter(Site!="PBB Storage tank")#just for July data I ran samples from PBB storage tank, which I decided to handle separately from the field samples
+glimpse(spec_data)
+```
+
+### Read in and clean up TA data
+```{r ta data}
+#should have used a loop for this but whatever
+tadat1 <- read.csv("20230720TA_final_run1.csv")
+tadat2 <- read.csv("20230720TA_final_run2.csv")
+tadat3 <- read.csv("20230721TA_final_run1.csv")
+tadat4 <- read.csv("20230721TA_final_run2.csv")
+ta_data <- bind_rows(tadat1, tadat2, tadat3, tadat4) %>%
+  filter(SampleID!='JUNK1' & SampleID!='JUNK2')#get rid of the junk seawater samples
+
+#separate sample ID into useful columns
+ta_data <- separate(data=ta_data, col=SampleID, into=c("Site", "Date", "Rep"), sep='_')
+
+summary(ta_data)
+
+#change site names from titrator to match those from spec
+for(i in 1:length(ta_data$Site)){
+  if(ta_data$Site[i] == "MANC"){
+    ta_data$Site[i] = "Manchester"
+  } else if(ta_data$Site[i] == "HOOD"){
+    ta_data$Site[i] = "Hood Head"
+  } else if(ta_data$Site[i] == "CHEL"){
+    ta_data$Site[i] = "Chelsea"
+  } else if(ta_data$Site[i] == "TB"){
+    ta_data$Site[i] = "Thorndyke"
+  } 
+}
+ta_data <- ta_data %>% filter(Site!="PBB")#get rid of PBB samples if needed
+ta_data$Site <- as.factor(ta_data$Site)#change site from char to factor
+
+summary(ta_data)
+```
+### Join data and run Seacarb
+```{r seacarb}
+#join pH and TA into one dataframe
+#note: this join assumes that only one sampling event is being processed at a time. if working with multiple months of seawater samples, use the date as well
+carbchem_data <- full_join(spec_data, ta_data, by=c("Site", "Rep"))
+
+#run carb function
+carbchem_data$seacarb <- carb(flag=8, #flag 8 uses pH as var1 and TA as var2
+                var1=carbchem_data$pH.sample.with.dye.corrections,
+                var2=(carbchem_data$TA_evap/1000000), #need mol/kg instead of micro mol/kg
+                T=carbchem_data$temp.Field,
+                S=carbchem_data$Salinity,
+                P=0)
+
+write.csv(carbchem_data, "july2023_carb_chem_system.csv")
+```
