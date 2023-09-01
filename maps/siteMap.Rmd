@@ -1,10 +1,11 @@
 ---
-title: "Oyster Maps"
-author: "Nick Chang"
-date: "`r Sys.Date()`"
+title: "Field Site Map"
+author: "Katie Jackson (modified from Nick's script)"
+date: "11 Aug 2023"
 output: html_document
 ---
 
+I needed a really simple, higher-res map for my poster that shows where the sites are in relation to each other and which were inter/subtidal. I modified the script Nick used to make his maps of the environmental conditions since they were already close to what I wanted -- most of the changes were aesthetic.
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(sf)
@@ -14,38 +15,15 @@ library(ggspatial)
 library(here)
 ```
 
-# Reading Data
+### Read in shoreline data
+Major shorelines files were downloaded from WA DOT (https://geo.wa.gov/datasets/WSDOT::wsdot-major-shorelines-1/about)
 ```{r}
-#shapefile of Washington's coastlines
+#read in the shapefile of WA shorelines
 shore = st_read("./MajorShorelines.shp")
 
-#respirometry summary data
-resp_sum = read.csv(here("respirometry", "resp_june23", "data", "site_resp_summary.csv"))
-
-#carbonate chemistry data
-carbChem = read.csv(here("carb_chem", "data", "carb_chem_field_oysters_Jun23.csv"))
-
-#modifying carbonate chemistry data to have site names in the correct format and summarizing key variables
-carbChem = carbChem %>%
-  #capitalizing site names
-  mutate(Site = paste(toupper(substr(site, 1, 1)), 
-                      substr(site, 2, 30), sep = "")
-         ) %>%
-  #changing 'Hood' to 'Hood Head' because I accidentally cut off part of the name somewhere along the way
-  mutate(Site = ifelse(Site == 'Hood', 'Hood Head', Site)) %>%
-  #grouping by site
-  group_by(Site) %>%
-  #summarizing carbonate chemistry parameters of interest
-  summarize(meanpH = mean(pH), 
-            meanAragonite = mean(CO2.OmegaAragonite), 
-            meanpCO2 = mean(CO2.pCO2), 
-            meanALK = mean(CO2.ALK))
-
-#reading in summary data from the LiveOcean Model
-temps = read.csv(here("temps", "LiveOcean", "tempsSummary.csv"))
 ```
 
-Creating a dataframe with coordinates
+### Create dataframe with site coordinates and types
 ```{r}
 Site = c("Thorndyke", "Chelsea", "Manchester", "Hood Head") 
 decLat = c(47.807765, 47.128306, 47.573497, 47.883779)
@@ -55,348 +33,48 @@ Sites = data.frame(Site, decLat, decLong, farmType)
 ```
 
 
-```{r}
-#joinng other datasets together to provide summary information for each field site
-Sites = Sites %>% 
-  inner_join(resp_sum, by = c("Site")) %>%
-  inner_join(temps, by = c("Site")) %>%
-  inner_join(carbChem, by = c("Site"))
-
-# creating a ploidy variable to use for labelling figures
-Sites = Sites %>%
-  mutate(Ploidy = ifelse(Colour == "blue", "Mated Diploid", 0)) %>%
-  mutate(Ploidy = ifelse(Colour == "red", "Mated Triploid", Ploidy)) %>%
-  mutate(Ploidy = ifelse(Colour == "green", "Induced Triploid", Ploidy))
-```
-
-
 ### Site Map
 ```{r}
 site_map = ggplot() +
-  #creating a shapefile layer, making the fill blue to represent water
-  geom_sf(data = shore, fill = "#E2DCD9")+
-  #Creating points on the map for each study site
+  #add shoreline from shapefile, wanted it to be a light grey
+  geom_sf(data = shore, fill = "#D9D9D9")+
+  #add points for each site
   geom_point(data = Sites,
              aes(x = decLong, 
-                 y = decLat), #assigning color site name
-             size = 5) +
+                 y = decLat,
+                 fill = Site, #color to match up with the site colors on my poster
+                 shape = farmType), #shape to denote sub/intertidal
+             color="black", #add black outline around each point
+             size = 5,) + #bump up the size for my poster
+  #manually assign the colors based on my established color scheme
   scale_fill_manual(values=c("#B3C863", "#756A8C","#037D64", "#CEB08E"))+
-
-  #labs(title = "Map of Study Sites", 
-      # subtitle = "Puget Sound, Washington, USA", 
-         #caption = "Data: WA DOT") +
-  #getting rid of axis labels
+  #manually assign the shapes - outlined filled squares (pch=22) for subtidal and circles (pch=21) for intertidal 
+  scale_shape_manual(values=c(21, 22))+
+  #get rid of axis labels
   xlab(" ") + 
   ylab(" ") +
-  #setting the extent of the map to be centered around the Puget Sound
+  #set bounds to zoom in to puget sound
   coord_sf(xlim = c(-123.4, -122), ylim = c(47, 48.2))+
-  #changing the theme to minimal
+  #change the theme to minimal
   theme_minimal() +
-  # Labelling each point with the name of each site
-  #geom_text(aes(x = decLong - .2, y = decLat, label = Site), 
-            #col = 'black') + 
-  # Adding a scale bar
+  #add a scale bar
   annotation_scale(location= "bl", width_hint = .25) +
-  # Adding a north arrow
-  annotation_north_arrow(location = "tl", 
+  #add a north arrow
+  annotation_north_arrow(location = "tl", #moved it to top left corner
                          style = north_arrow_fancy_orienteering()) +
-  #changing the text style
-    theme(title = element_text(face = "bold"),
-          #changing the color of the land area (because I only have a shapefile for the sea, the land color is the same as background)
-          # Getting rid of the ticks on each axis
-          axis.text.x = element_blank(), 
+  theme(axis.text.x = element_blank(), #get rid of the tick marks on the axes
           axis.text.y = element_blank(),
-          #changing the position of the legend so that is is on the map and not off to the side
-          legend.position = c(0.85, 0.1),
-          #giving the legend a white background with a black outline,
-          #making the grid lines transparent
+          #legend will be easier to adjust in powerpoint, so I'll just remove it for now (I'll label each site and make a legend for the shapes)
+          legend.position = "none",
+          #make the grid lines transparent
           panel.grid.major=element_line(colour="transparent"),
           panel.grid.minor=element_line(colour="transparent")
           ) 
 
-site_map
-ggsave("./siteMap.png", plot=site_map, width=4.87, height=7.09, units="in")
+site_map #cool
 
-```
-
-### Environmental Variable Maps
-
-#### Creating a map for temperature
-```{r}
-temp_map = ggplot() +
-  #reading in and symbolizing the shapefile
-  geom_sf(data = shore, fill = "#8BAAB8", col = "#626060")+
-  #creating points for each site
-  geom_point(data = Sites, 
-            #setting the positions of the point
-            #setting the color of each point to the daily mean temperature
-             aes(x = decLong, y = decLat, fill = avgDailyMean), 
-             shape = 21, size = 5, col = "black") +
-  #specifying the color scale that I want the temperature data to be shown as
-   scale_fill_gradient(
-     high = 'orange',
-     low = "darkblue") +
-  #adding a title
-  labs(title = "Water temperature (°C) across study sites" 
-      # subtitle = "Puget Sound, Washington, USA", 
-         #caption = "Data: WA DOT"
-      ) +
-  #getting rid of axes
-  xlab(" ") + 
-  ylab(" ") +
-  #setting map extent
-  coord_sf(xlim = c(-123.4, -122), ylim = c(47, 48.2))+
-  #changing the theme
-  theme_minimal() + 
-  theme(
-    panel.background = element_rect(fill ='#6B6969'),
-    legend.position = c(0.85, 0.2),
-    legend.background = element_rect(fill = "white", color = "black"),
-    legend.title = element_blank(), 
-    panel.grid.major=element_line(colour="transparent"),
-    panel.grid.minor=element_line(colour="transparent"), 
-    title = element_text(face = "bold", family = "Times"),
-    axis.text.x = element_blank(), 
-    axis.text.y = element_blank()
-    ) +
-  geom_text(
-    aes(x = decLong - .2, y = decLat, label = Site), 
-    col = 'white', family = "Times") + 
-  annotation_scale(location= "bl", width_hint = .25) +
-  annotation_north_arrow(location = "tr", 
-                         style = north_arrow_fancy_orienteering())
-temp_map
-```
-
-#### Creating a map for pH
-```{r}
-pH_map = ggplot() +
-  #Reading in shapefile
-  geom_sf(data = shore, fill = "#8BAAB8", col = "#626060")+
-  #creating points
-  geom_point(data = Sites, 
-             #specifying locations and color
-             aes(x = decLong, y = decLat, fill = meanpH), 
-             shape = 21, size = 5, col = "black") +
-  #specifying color scale
-   scale_fill_gradient(high = '#2c7fb8',low = "#edf8b1") +
-  #plot title
-  labs(title = "pH across study sites") +
-  xlab(" ") + 
-  ylab(" ") +
-  #specifying extent
-  coord_sf(xlim = c(-123.4, -122), ylim = c(47, 48.2))+
-  #specifying theme
-  theme_minimal() + 
-  
-  theme(
-    #adding land color
-    panel.background = element_rect(fill ='#6B6969'), 
-    #changing legend position
-    legend.position = c(0.85, 0.2),
-    #changing legend background color
-    legend.background = element_rect(fill = "white", color = "black"),
-    #getting rid of legend title (because it is in the title of the map)
-    legend.title = element_blank(), 
-    #getting rid of gridlines
-    panel.grid.major=element_line(colour="transparent"),
-    panel.grid.minor=element_line(colour="transparent"), 
-    #changing the title font
-    title = element_text(face = "bold", family = "Times"),
-    #getting rid of tic marks
-    axis.text.x = element_blank(), 
-    axis.text.y = element_blank()
-       ) +
-  #creating labels for each of the sites
-  geom_text(aes(x = decLong - .2, y = decLat, label = Site), col = 'white', 
-       family = "Times") + 
-  #adding a scale bar
-  annotation_scale(location= "bl", width_hint = .25) +
-  #adding a north arrow
-  annotation_north_arrow(location = "tr", 
-                         style = north_arrow_fancy_orienteering())
-
-pH_map
-
-```
-
-
-```{r}
-aragonite_map = ggplot() +
-  #Reading in shapefile
-  geom_sf(data = shore, fill = "#8BAAB8", col = "#626060")+
-  #creating points
-  geom_point(data = Sites, 
-             #specifying locations and color
-             aes(x = decLong, y = decLat, fill = meanAragonite), 
-             shape = 21, size = 5, col = "black") +
-  #specifying color scale
-   scale_fill_gradient(high = '#2c7fb8',low = "#edf8b1") +
-  #plot title
-  labs(title = "Aragonite saturation across study sites") +
-  xlab(" ") + 
-  ylab(" ") +
-  #specifying extent
-  coord_sf(xlim = c(-123.4, -122), ylim = c(47, 48.2))+
-  #specifying theme
-  theme_minimal() + 
-  
-  theme(
-    #adding land color
-    panel.background = element_rect(fill ='#6B6969'), 
-    #changing legend position
-    legend.position = c(0.85, 0.2),
-    #changing legend background color
-    legend.background = element_rect(fill = "white", color = "black"),
-    #getting rid of legend title (because it is in the title of the map)
-    legend.title = element_blank(), 
-    #getting rid of gridlines
-    panel.grid.major=element_line(colour="transparent"),
-    panel.grid.minor=element_line(colour="transparent"), 
-    #changing the title font
-    title = element_text(face = "bold", family = "Times"),
-    #getting rid of tic marks
-    axis.text.x = element_blank(), 
-    axis.text.y = element_blank()
-       ) +
-  #creating labels for each of the sites
-  geom_text(aes(x = decLong - .2, y = decLat, label = Site), col = 'white', 
-       family = "Times") + 
-  #adding a scale bar
-  annotation_scale(location= "bl", width_hint = .25) +
-  #adding a north arrow
-  annotation_north_arrow(location = "tr", 
-                         style = north_arrow_fancy_orienteering())
-
-aragonite_map
-```
-
-
-```{r}
-ALK_map = ggplot() +
-#Reading in shapefile
-  geom_sf(data = shore, fill = "#8BAAB8", col = "#626060")+
-  #creating points
-  geom_point(data = Sites, 
-             #specifying locations and color
-             aes(x = decLong, y = decLat, fill = meanALK), 
-             shape = 21, size = 5, col = "black") +
-  #specifying color scale
-   scale_fill_gradient(high = '#2c7fb8',low = "#edf8b1") +
-  #plot title
-  labs(title = "Alkalinity across study sites") +
-  xlab(" ") + 
-  ylab(" ") +
-  #specifying extent
-  coord_sf(xlim = c(-123.4, -122), ylim = c(47, 48.2))+
-  #specifying theme
-  theme_minimal() + 
-  
-  theme(
-    #adding land color
-    panel.background = element_rect(fill ='#6B6969'), 
-    #changing legend position
-    legend.position = c(0.85, 0.2),
-    #changing legend background color
-    legend.background = element_rect(fill = "white", color = "black"),
-    #getting rid of legend title (because it is in the title of the map)
-    legend.title = element_blank(), 
-    #getting rid of gridlines
-    panel.grid.major=element_line(colour="transparent"),
-    panel.grid.minor=element_line(colour="transparent"), 
-    #changing the title font
-    title = element_text(face = "bold", family = "Times"),
-    #getting rid of tic marks
-    axis.text.x = element_blank(), 
-    axis.text.y = element_blank()
-       ) +
-  #creating labels for each of the sites
-  geom_text(aes(x = decLong - .2, y = decLat, label = Site), col = 'white', 
-       family = "Times") + 
-  #adding a scale bar
-  annotation_scale(location= "bl", width_hint = .25) +
-  #adding a north arrow
-  annotation_north_arrow(location = "tr", 
-                         style = north_arrow_fancy_orienteering())
-
-ALK_map
-```
-
-```{r}
-pCO2_map = ggplot() +
-#Reading in shapefile
-  geom_sf(data = shore, fill = "#8BAAB8", col = "#626060")+
-  #creating points
-  geom_point(data = Sites, 
-             #specifying locations and color
-             aes(x = decLong, y = decLat, fill = meanpCO2), 
-             shape = 21, size = 5, col = "black") +
-  #specifying color scale--Flipping the color scales!!
-   scale_fill_gradient(low = '#2c7fb8', high = "#edf8b1") +
-  #plot title
-  labs(title = "pCO2 (ppm) across study sites") +
-  xlab(" ") + 
-  ylab(" ") +
-  #specifying extent
-  coord_sf(xlim = c(-123.4, -122), ylim = c(47, 48.2))+
-  #specifying theme
-  theme_minimal() + 
-  
-  theme(
-    #adding land color
-    panel.background = element_rect(fill ='#6B6969'), 
-    #changing legend position
-    legend.position = c(0.85, 0.2),
-    #changing legend background color
-    legend.background = element_rect(fill = "white", color = "black"),
-    #getting rid of legend title (because it is in the title of the map)
-    legend.title = element_blank(), 
-    #getting rid of gridlines
-    panel.grid.major=element_line(colour="transparent"),
-    panel.grid.minor=element_line(colour="transparent"), 
-    #changing the title font
-    title = element_text(face = "bold", family = "Times"),
-    #getting rid of tic marks
-    axis.text.x = element_blank(), 
-    axis.text.y = element_blank()
-       ) +
-  #creating labels for each of the sites
-  geom_text(aes(x = decLong - .2, y = decLat, label = Site), col = 'white', 
-       family = "Times") + 
-  #adding a scale bar
-  annotation_scale(location= "bl", width_hint = .25) +
-  #adding a north arrow
-  annotation_north_arrow(location = "tr", 
-                         style = north_arrow_fancy_orienteering())
-
-pCO2_map
-```
-
-
-
-
-### Other Figs
-
-```{r}
-tempVresp = Sites %>%
-  ggplot() + 
-  geom_point(aes(x = avgDailyMean,
-                 y = rate_mean, col =Site), size = 4) + 
-#  scale_color_manual(values = cols) + 
-  geom_linerange(aes(
-    x = avgDailyMean,
-    ymax = rate_mean + rate_se, 
-    ymin = rate_mean - rate_se, 
-    col = Site
-  )) + 
-  labs(title = "Mean oxygen consumption rate vs. average daily mean temperature\nacross ploidy groups") + 
-  ylab("Mean oxygen consumption rate (  mols/L/min/g)\n+/- std. error") + 
-  xlab("Average daily mean temperature (°C)") + 
-  facet_wrap(~Ploidy) + 
-    theme_bw()+
-  theme(strip.background = element_blank()) 
-
-tempVresp
+#save the map to the size I need for my poster
+#ggsave("./siteMap.png", plot=site_map, width=4.87, height=7.09, units="in")
 
 ```
 

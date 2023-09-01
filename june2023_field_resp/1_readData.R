@@ -55,7 +55,7 @@ allratesdat <- data.frame(matrix(ncol=3,nrow=0, dimnames=list(NULL, c("probe", "
 #inspect each run to determine where we are going to calculate the rate (i.e. remove any weird spots of data)
 run_num <- run_3 #Put the number of the run that you are caclulcating rate for here
 df.name <- "3" ##Update this each time you update the above
-inspect(run_num, time = 1, oxygen = 2:8)#*Assumes 8 probe respirometer****
+inspect(run_num, time = 1, oxygen = 2:7)#*Assumes 8 probe respirometer****
 #Set the start and end times over the period of o2 consumption based on inspection of data
 #About a 30 minute period with no blips/weird behavior
 start_time <- 10
@@ -78,9 +78,12 @@ for(i in 2:ncol(run_num)){
   tempoxydf$probe <- colnames(run_num)[i]
   tempoxydf$rate <- oxrate$summary$rate
   tempoxydf$run <- df.name
+  #tempoxydf$rsq <- oxrate$summary$rsq
   respdf <- rbind(respdf, tempoxydf)
 }
 
+#summary(oxrate)
+#?calc_rate
 #warnings()
 
 #rename the df to the name of teh run that you just used
@@ -103,4 +106,9 @@ animalratedat <- merge(resplog, allratesdat, by=c('probe', 'run'))
 animalratedat$Colour <- as.factor(animalratedat$Colour)
 #animalratedat$Treatment <- as.factor(animalratedat$Treatment)
 
-write.csv(animalratedat, "animal_resp_rates.csv", row.names=FALSE)
+old_respdat <- read.csv("animal_resp_rates_better.csv") %>% 
+  filter(run!=3)
+
+animalratedat <- rbind(animalratedat, old_respdat)
+
+write.csv(animalratedat, "animal_resp_rates_best.csv", row.names=FALSE)
